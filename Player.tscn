@@ -23,10 +23,14 @@ shape = SubResource( 1 )
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="Cone" type="Light2D" parent="Lights"]
+position = Vector2( 0, -8 )
 texture = ExtResource( 3 )
+texture_scale = 0.5
 color = Color( 1, 0, 0, 1 )
 shadow_enabled = true
 
 [node name="Spot" type="Light2D" parent="Lights"]
+position = Vector2( -8, 0 )
 texture = ExtResource( 4 )
+texture_scale = 0.5
 color = Color( 1, 0, 0, 1 )
