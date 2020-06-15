@@ -8,16 +8,18 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, 56 )
 
 [node name="RedObstacle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 304, 72 )
 color = Color( 0.843137, 0.184314, 0.113725, 1 )
 
 [node name="BlueObstacle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 536, 320 )
+position = Vector2( 72, 184 )
 color = Color( 0, 0, 1, 1 )
 
 [node name="GreenObstacle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 480, 128 )
+position = Vector2( 304, 160 )
 color = Color( 0, 1, 0, 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -25,13 +27,13 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Background" type="Polygon2D" parent="."]
 z_index = -10
-color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
-polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 600, 0, 600 )
+color = Color( 0.470588, 0.470588, 0.470588, 1 )
+polygon = PoolVector2Array( 0, 0, 512, 0, 512, 300, 0, 300 )
 
 [node name="HappyPig" parent="." instance=ExtResource( 2 )]
-position = Vector2( 352, 288 )
+position = Vector2( 232, 40 )
 colour = Color( 1, 0, 0, 1 )
 
 [node name="AngryPig" parent="." instance=ExtResource( 3 )]
-position = Vector2( 392, 232 )
+position = Vector2( 248, 112 )
 colour = Color( 0, 1, 0, 1 )
