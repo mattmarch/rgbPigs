@@ -8,7 +8,7 @@ var current_colour = 0
 
 onready var lights := $Lights
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
     var velocity = SPEED * Vector2(
         Input.get_action_strength("right") - Input.get_action_strength("left"),
         Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -16,7 +16,7 @@ func _physics_process(delta: float):
     if Input.is_action_pressed("ui_cancel"):
         get_tree().quit()
     move_and_slide(velocity)
-    lights.rotation = get_direction_to_mouse()
+    rotation = get_direction_to_mouse()
     if Input.is_action_just_pressed("leftclick"):
         current_colour = (current_colour + 1) % 3
         set_lights(COLOURS[current_colour])
