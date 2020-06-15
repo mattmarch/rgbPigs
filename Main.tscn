@@ -1,26 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HappyPig.tscn" type="PackedScene" id=2]
 [ext_resource path="res://AngryPig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Obstacle.tscn" type="PackedScene" id=4]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 550, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 320 )
+
 [node name="Main" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 80, 56 )
-
-[node name="RedObstacle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 304, 72 )
-color = Color( 0.843137, 0.184314, 0.113725, 1 )
-
-[node name="BlueObstacle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 72, 184 )
-color = Color( 0, 0, 1, 1 )
-
-[node name="GreenObstacle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 304, 160 )
-color = Color( 0, 1, 0, 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
@@ -28,12 +19,49 @@ color = Color( 0, 0, 0, 1 )
 [node name="Background" type="Polygon2D" parent="."]
 z_index = -10
 color = Color( 0.470588, 0.470588, 0.470588, 1 )
-polygon = PoolVector2Array( 0, 0, 512, 0, 512, 300, 0, 300 )
+polygon = PoolVector2Array( 0, 0, 2048, 0, 2048, 1200, 0, 1200 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 880, 560 )
+
+[node name="RedObstacle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1104, 576 )
+color = Color( 0.843137, 0.184314, 0.113725, 1 )
+
+[node name="BlueObstacle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 872, 688 )
+color = Color( 0, 0, 1, 1 )
+
+[node name="GreenObstacle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1104, 664 )
+color = Color( 0, 1, 0, 1 )
 
 [node name="HappyPig" parent="." instance=ExtResource( 2 )]
-position = Vector2( 232, 40 )
+position = Vector2( 1032, 544 )
 colour = Color( 1, 0, 0, 1 )
 
 [node name="AngryPig" parent="." instance=ExtResource( 3 )]
-position = Vector2( 248, 112 )
+position = Vector2( 1048, 616 )
 colour = Color( 0, 1, 0, 1 )
+
+[node name="Edges" type="StaticBody2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Edges"]
+points = PoolVector2Array( 512, 300, 1536, 300, 1536, 900, 512, 900, 512, 295 )
+default_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+
+[node name="Top" type="CollisionShape2D" parent="Edges"]
+position = Vector2( 1024, 288 )
+shape = SubResource( 1 )
+
+[node name="Bottom" type="CollisionShape2D" parent="Edges"]
+position = Vector2( 1024, 912 )
+shape = SubResource( 1 )
+
+[node name="Left" type="CollisionShape2D" parent="Edges"]
+position = Vector2( 502, 592 )
+shape = SubResource( 2 )
+
+[node name="Right" type="CollisionShape2D" parent="Edges"]
+position = Vector2( 1546, 600 )
+shape = SubResource( 2 )

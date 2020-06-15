@@ -28,10 +28,16 @@ texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 1, 0, 0, 1 )
 shadow_enabled = true
-shadow_gradient_length = 0.5
+shadow_gradient_length = 0.3
+shadow_filter = 4
+shadow_filter_smooth = 10.0
 
 [node name="Spot" type="Light2D" parent="Lights"]
 position = Vector2( -8, 0 )
 texture = ExtResource( 4 )
 texture_scale = 0.5
 color = Color( 1, 0, 0, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
