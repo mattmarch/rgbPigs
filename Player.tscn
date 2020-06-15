@@ -28,6 +28,7 @@ texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 1, 0, 0, 1 )
 shadow_enabled = true
+shadow_gradient_length = 0.5
 
 [node name="Spot" type="Light2D" parent="Lights"]
 position = Vector2( -8, 0 )
