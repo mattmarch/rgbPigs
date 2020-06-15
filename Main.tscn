@@ -38,13 +38,13 @@ color = Color( 0, 1, 0, 1 )
 
 [node name="HappyPig" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1032, 544 )
-colour = Color( 1, 0, 0, 1 )
 
 [node name="AngryPig" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1048, 616 )
 colour = Color( 0, 1, 0, 1 )
 
 [node name="Edges" type="StaticBody2D" parent="."]
+z_index = -5
 
 [node name="Line2D" type="Line2D" parent="Edges"]
 points = PoolVector2Array( 512, 300, 1536, 300, 1536, 900, 512, 900, 512, 295 )
