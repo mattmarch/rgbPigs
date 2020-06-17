@@ -39,3 +39,7 @@ func get_nearby_player() -> Player:
 func direction_to_turn(target: Vector2) -> int:
     var angle_to = get_angle_to(target)
     return Directions.LEFT if angle_to > 0 else Directions.RIGHT 
+
+
+func hit():
+    queue_free()

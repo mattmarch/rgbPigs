@@ -41,3 +41,6 @@ color = Color( 1, 0, 0, 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
+
+[node name="ShellSpawn" type="Position2D" parent="."]
+position = Vector2( 12, 6.5 )

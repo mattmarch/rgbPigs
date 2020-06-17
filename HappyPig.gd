@@ -21,3 +21,7 @@ func _on_timer_timeout():
         current_turn_speed = rand_range(-turn_speed, turn_speed)
     else:
         current_turn_speed = 0
+
+
+func hit():
+    queue_free()
