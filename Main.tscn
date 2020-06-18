@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://HappyPig.tscn" type="PackedScene" id=2]
-[ext_resource path="res://AngryPig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Obstacle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 550, 10 )
@@ -12,6 +11,7 @@ extents = Vector2( 550, 10 )
 extents = Vector2( 10, 320 )
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
@@ -36,13 +36,6 @@ color = Color( 0, 0, 1, 1 )
 position = Vector2( 1104, 664 )
 color = Color( 0, 1, 0, 1 )
 
-[node name="HappyPig" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1032, 544 )
-
-[node name="AngryPig" parent="." instance=ExtResource( 3 )]
-position = Vector2( 960, 608 )
-colour = Color( 0, 1, 0, 1 )
-
 [node name="Edges" type="StaticBody2D" parent="."]
 z_index = -5
 
@@ -65,3 +58,6 @@ shape = SubResource( 2 )
 [node name="Right" type="CollisionShape2D" parent="Edges"]
 position = Vector2( 1546, 600 )
 shape = SubResource( 2 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true

@@ -4,6 +4,10 @@ export (Color) var colour := Color(1.0, 0.0, 0.0)
 export (float) var speed := 50
 export (float) var turn_speed := 0.03
 
+const FREE_RANGE := 800
+
+var player: Player
+
 var current_turn_speed := 0.0
 
 func _ready():
@@ -14,6 +18,8 @@ func _ready():
 func _physics_process(_delta):
     rotation += current_turn_speed
     move_and_slide(Vector2(-speed, 0).rotated(rotation))
+    if player.global_position.distance_to(global_position) > FREE_RANGE:
+        queue_free()
     
     
 func _on_timer_timeout():

@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "GlobalConstants",
+"language": "GDScript",
+"path": "res://GlobalConstants.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player.gd"
 } ]
 _global_script_class_icons={
+"GlobalConstants": "",
 "Player": ""
 }
 
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="Flashlight"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://GlobalConstants.gd"
 
 [debug]
 
