@@ -1,8 +1,6 @@
 extends KinematicBody2D
 class_name Player
 
-const SPEED := 200
-
 const COLOURS := [Color(1.3, 0, 0), Color(0, 1, 0), Color(0, 0, 1.6)]
 
 var shell_resource := preload("res://Shell.tscn")
@@ -12,7 +10,7 @@ var current_colour := 0
 onready var lights := $Lights
 
 func _physics_process(_delta: float):
-    var velocity = SPEED * Vector2(
+    var velocity = Globals.PLAYER_SPEED * Vector2(
         Input.get_action_strength("right") - Input.get_action_strength("left"),
         Input.get_action_strength("down") - Input.get_action_strength("up")
        )

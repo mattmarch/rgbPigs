@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 export (Color) var colour := Color(1.0, 0.0, 0.0)
-export (float) var speed := 50
 export (float) var turn_speed := 0.03
 
 const TRIGGER_RANGE := Globals.ANGRY_PIG_TRIGGER_RANGE
@@ -23,7 +22,7 @@ func _physics_process(_delta):
         rotation += current_turn_speed 
     else:
         rotation += -direction_to_turn(player.position) * turn_speed
-    move_and_slide(Vector2(-speed, 0).rotated(rotation))
+    move_and_slide(Vector2(-Globals.PIG_SPEED, 0).rotated(rotation))
     if player.global_position.distance_to(global_position) > FREE_RANGE:
         queue_free()
     
