@@ -46,3 +46,6 @@ smoothing_enabled = true
 
 [node name="ShellSpawn" type="Position2D" parent="."]
 position = Vector2( 12, 6.5 )
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
