@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name AngryPig
 
 export (Color) var colour := Color(1.0, 0.0, 0.0)
 export (float) var turn_speed := 0.03
@@ -10,11 +11,14 @@ var current_turn_speed := 0.0
 
 var player: Player
 
+var has_just_attacked := false
+
 enum Directions {LEFT = 1, RIGHT = -1}
 
 func _ready():
     $Sprite.modulate = colour
-    $RotationTimer.connect("timeout", self, "_on_timer_timeout")
+    $RotationTimer.connect("timeout", self, "_on_rotation_timer_timeout")
+    $CooldownTimer.connect("timeout", self, "_on_cooldown_timer_timeout")
 
 
 func _physics_process(_delta):
@@ -22,16 +26,28 @@ func _physics_process(_delta):
         rotation += current_turn_speed 
     else:
         rotation += -direction_to_turn(player.position) * turn_speed
-    move_and_slide(Vector2(-Globals.PIG_SPEED, 0).rotated(rotation))
+    move_and_slide(get_velocity())
+    if !has_just_attacked:
+        for collision_index in get_slide_count():
+            var collision = get_slide_collision(collision_index)
+            if collision.collider is Player:
+                Events.emit_signal("player_hit")
+                $CooldownTimer.start()
+                has_just_attacked = true
+                break
     if player.global_position.distance_to(global_position) > FREE_RANGE:
         queue_free()
     
     
-func _on_timer_timeout():
+func _on_rotation_timer_timeout():
     if current_turn_speed == 0.0:
         current_turn_speed = rand_range(-turn_speed, turn_speed)
     else:
         current_turn_speed = 0
+
+
+func _on_cooldown_timer_timeout():
+    has_just_attacked = false
 
 
 func is_player_nearby() -> bool:
@@ -41,6 +57,13 @@ func is_player_nearby() -> bool:
 func direction_to_turn(target: Vector2) -> int:
     var angle_to = get_angle_to(target)
     return Directions.LEFT if angle_to > 0 else Directions.RIGHT 
+
+
+func get_velocity():
+    return Vector2(
+        Globals.PIG_SPEED * (1 if has_just_attacked else -1),
+        0
+       ).rotated(rotation)
 
 
 func hit():

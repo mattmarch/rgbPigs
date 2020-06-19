@@ -5,6 +5,8 @@ const SPAWN_DISTANCE := Globals.PIG_SPAWN_DIST
 
 const PIG_COLOURS := [Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1)]
 
+const PLAYER_START := Vector2(900, 600)
+
 const happy_pig_res := preload("res://HappyPig.tscn")
 const angry_pig_res := preload("res://AngryPig.tscn")
 
@@ -16,10 +18,19 @@ var angry_pig_chance := 0.2
 func _ready():
     $SpawnTimer.connect("timeout", self, "_on_timer_timeout")
     Events.connect("start", self, "_on_start")
+    Events.connect("game_over", self, "_on_game_over")
 
 
 func _on_start():
     $SpawnTimer.start()
+    player.position = PLAYER_START
+
+
+func _on_game_over():
+    for child in get_children():
+        if child is AngryPig or child is HappyPig:
+            child.queue_free()
+    $SpawnTimer.stop()
 
 
 func _on_timer_timeout():

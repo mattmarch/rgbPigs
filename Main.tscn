@@ -27,7 +27,7 @@ color = Color( 0.470588, 0.470588, 0.470588, 1 )
 polygon = PoolVector2Array( 0, 0, 2048, 0, 2048, 1200, 0, 1200 )
 
 [node name="Player" parent="MainLevel" instance=ExtResource( 1 )]
-position = Vector2( 880, 560 )
+position = Vector2( 900, 600 )
 
 [node name="Edges" type="StaticBody2D" parent="MainLevel"]
 z_index = -5

@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name HappyPig
 
 export (Color) var colour := Color(1.0, 0.0, 0.0)
 export (float) var turn_speed := 0.03
