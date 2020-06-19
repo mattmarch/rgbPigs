@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 const BOUNDS := Rect2(512, 300, 1024, 600)
 const SPAWN_DISTANCE := Globals.PIG_SPAWN_DIST
@@ -15,7 +15,12 @@ var angry_pig_chance := 0.2
 
 func _ready():
     $SpawnTimer.connect("timeout", self, "_on_timer_timeout")
-    
+    Events.connect("start", self, "_on_start")
+
+
+func _on_start():
+    $SpawnTimer.start()
+
 
 func _on_timer_timeout():
     spawn_pig()

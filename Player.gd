@@ -26,7 +26,7 @@ func _physics_process(_delta: float):
 
 
 func get_direction_to_mouse() -> float:
-    var vector_to_mouse = get_global_mouse_position() - global_position
+    var vector_to_mouse = 2 * get_global_mouse_position() - get_viewport_rect().size
     return vector_to_mouse.angle()
 
 
