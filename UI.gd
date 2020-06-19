@@ -5,6 +5,8 @@ onready var title: Label = $Title
 onready var background: ColorRect = $BlackBackground
 onready var center_text: Label = $CenterText
 onready var anims: AnimationPlayer = $AnimationPlayer
+onready var hearts: Control = $Hearts
+onready var shells: Control = $Shells
 
 
 func _ready():
@@ -15,6 +17,8 @@ func _ready():
 func _on_start_button_pressed():
     start_button.visible = false
     center_text.visible = true
+    hearts.visible = true
+    shells.visible = true
     anims.play("FadeIntro")
     
 func _on_animation_finished(anim_name: String):

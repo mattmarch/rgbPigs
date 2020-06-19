@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Other/MetalMania-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Other/HeartIcon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Other/ShellIcon.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -115,3 +117,46 @@ text = "Get ready..."
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeIntro = SubResource( 3 )
+
+[node name="Hearts" type="Control" parent="."]
+visible = false
+margin_right = 208.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="H1" type="Sprite" parent="Hearts"]
+position = Vector2( 40, 40 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+
+[node name="H2" type="Sprite" parent="Hearts"]
+position = Vector2( 104, 40 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+
+[node name="H3" type="Sprite" parent="Hearts"]
+position = Vector2( 168, 40 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+
+[node name="Shells" type="Control" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -144.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S1" type="Sprite" parent="Shells"]
+position = Vector2( 40, 32 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 4 )
+
+[node name="S2" type="Sprite" parent="Shells"]
+position = Vector2( 104, 32 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 4 )
