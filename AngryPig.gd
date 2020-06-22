@@ -67,4 +67,5 @@ func get_velocity():
 
 
 func hit():
+    Events.emit_signal("demon_pig_slain")
     queue_free()
