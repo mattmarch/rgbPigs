@@ -72,3 +72,4 @@ func _on_game_over():
 
 func _on_start():
     started = true
+    shells = 2
