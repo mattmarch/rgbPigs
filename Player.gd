@@ -10,6 +10,7 @@ var current_colour := 0
 var started := false
 
 onready var lights := $Lights
+onready var audio := $AudioStreamPlayer
 
 
 func _ready():
@@ -59,6 +60,10 @@ func shoot():
         Events.emit_signal("update_shells", shells)
         if shells == 0:
             $ReloadTimer.start()
+            audio.shoot_and_reload()
+        else:
+            audio.shoot()
+            
                 
 
 func _on_reload_timer_timeout():
