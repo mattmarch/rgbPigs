@@ -12,19 +12,21 @@ const angry_pig_res := preload("res://AngryPig.tscn")
 
 onready var player: Player = $Player
 
-var angry_pig_chance := 0.2
+var angry_pig_chance: float
 
 
 func _ready():
     $SpawnTimer.connect("timeout", self, "_on_timer_timeout")
     Events.connect("start", self, "_on_start")
     Events.connect("game_over", self, "_on_game_over")
+    Events.connect("happy_pig_slain", self, "_on_happy_pig_slain")
 
 
 func _on_start():
     $SpawnTimer.start()
     player.position = PLAYER_START
-
+    angry_pig_chance = 0.2
+    Events.emit_signal("update_insanity", angry_pig_chance)
 
 func _on_game_over():
     for child in get_children():
@@ -62,3 +64,8 @@ func get_spawn_position(player_position: Vector2, angle: float):
 
 func get_random_colour() -> Color:
     return PIG_COLOURS[randi() % PIG_COLOURS.size()]
+
+
+func _on_happy_pig_slain():
+    angry_pig_chance += 0.1
+    Events.emit_signal("update_insanity", angry_pig_chance)

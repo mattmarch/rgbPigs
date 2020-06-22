@@ -30,4 +30,5 @@ func _on_timer_timeout():
 
 
 func hit():
+    Events.emit_signal("happy_pig_slain")
     queue_free()

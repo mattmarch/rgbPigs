@@ -146,6 +146,7 @@ __meta__ = {
 }
 
 [node name="CenterText" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -210,13 +211,26 @@ texture = ExtResource( 4 )
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -192.0
-margin_top = 20.0
-margin_right = 192.0
-margin_bottom = 80.0
+margin_left = -296.0
+margin_top = 16.0
+margin_right = 88.0
+margin_bottom = 76.0
 custom_fonts/font = SubResource( 6 )
 text = "Demon Pigs Slain: 0"
-align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InsanityLevel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 120.0
+margin_top = 16.0
+margin_right = 504.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 6 )
+text = "Insanity Level: 20%"
 __meta__ = {
 "_edit_use_anchors_": false
 }
