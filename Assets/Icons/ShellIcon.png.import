@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShellIcon.png-03463e0c67a3f17e61d43d2239796ca1.stex"
+path="res://.import/ShellIcon.png-13631894d4855332f2b36532950d7da1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Other/ShellIcon.png"
-dest_files=[ "res://.import/ShellIcon.png-03463e0c67a3f17e61d43d2239796ca1.stex" ]
+source_file="res://Assets/Icons/ShellIcon.png"
+dest_files=[ "res://.import/ShellIcon.png-13631894d4855332f2b36532950d7da1.stex" ]
 
 [params]
 

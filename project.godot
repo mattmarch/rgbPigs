@@ -53,7 +53,7 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-mouse_cursor/custom_image="res://Assets/Other/Cursor.png"
+mouse_cursor/custom_image="res://Assets/Icons/Cursor.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
