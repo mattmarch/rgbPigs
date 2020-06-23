@@ -97,8 +97,12 @@ func _on_credits_button_pressed():
         start_button.visible = false
         credits_button.text = "Back"
         $Credits.visible = true
+        center_text.visible = false
     else:
         in_credits = false
         start_button.visible = true
         credits_button.text = "Credits"
         $Credits.visible = false
+        if health == 0:
+            # i.e. if Game over
+            center_text.visible = true
