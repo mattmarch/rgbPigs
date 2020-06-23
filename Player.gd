@@ -26,8 +26,6 @@ func _physics_process(_delta: float):
         Input.get_action_strength("right") - Input.get_action_strength("left"),
         Input.get_action_strength("down") - Input.get_action_strength("up")
        )
-    if Input.is_action_pressed("ui_cancel"):
-        get_tree().quit()
     move_and_slide(velocity)
     rotation = get_direction_to_mouse()
     if Input.is_action_just_pressed("leftclick"):
