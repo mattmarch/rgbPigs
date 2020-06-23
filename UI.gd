@@ -3,25 +3,27 @@ extends Control
 const FADED_COLOUR := Color(0.2, 0.2, 0.2)
 const BRIGHT_COLOUR := Color(1, 1, 1)
 
-onready var start_button: Button = $StartButton
+onready var start_button: Button = $MenuButtons/StartButton
+onready var credits_button: Button = $MenuButtons/CreditsButton
 onready var title: Label = $Title
 onready var background: ColorRect = $BlackBackground
 onready var center_text: Label = $CenterText
 onready var anims: AnimationPlayer = $AnimationPlayer
-onready var hearts: Control = $Hearts
-onready var shells: Control = $Shells
-onready var score_counter: Label = $ScoreCounter
-onready var insanity_display: Label = $InsanityLevel
+onready var score_counter: Label = $InGameDisplays/ScoreCounter
+onready var insanity_display: Label = $InGameDisplays/InsanityLevel
 
-onready var heart_array := [$Hearts/H1, $Hearts/H2, $Hearts/H3]
+onready var heart_array := [$InGameDisplays/Hearts/H1, $InGameDisplays/Hearts/H2, $InGameDisplays/Hearts/H3]
 var health := 3
-var score : = 0
+var score := 0
 
-onready var shell_array := [$Shells/S1, $Shells/S2]
+var in_credits := false
+
+onready var shell_array := [$InGameDisplays/Shells/S1, $InGameDisplays/Shells/S2]
 
 
 func _ready():
     start_button.connect("pressed", self, "_on_start_button_pressed")
+    credits_button.connect("pressed", self, "_on_credits_button_pressed")
     anims.connect("animation_finished", self, "_on_animation_finished")
     Events.connect("player_hit", self, "_on_player_hit")
     Events.connect("game_over", self, "_on_game_over")
@@ -31,7 +33,7 @@ func _ready():
 
 
 func _on_start_button_pressed():
-    start_button.visible = false
+    $MenuButtons.visible = false
     center_text.visible = true
     anims.play("FadeIntro")
     Events.emit_signal("start")
@@ -40,17 +42,14 @@ func _on_start_button_pressed():
 func _on_animation_finished(anim_name: String):
     if anim_name == "FadeGameOver":
         start_button.text = "Retry?"
-        start_button.visible = true
+        $MenuButtons.visible = true
     elif anim_name == "FadeIntro":
-        hearts.visible = true
         health = 3
         for heart in heart_array:
             heart.modulate = BRIGHT_COLOUR
-        shells.visible = true
         score = 0
-        update_score_display() 
-        score_counter.visible = true
-        insanity_display.visible = true
+        update_score_display()
+        $InGameDisplays.visible = true
         
         
 func _on_player_hit():
@@ -63,10 +62,7 @@ func _on_player_hit():
 func _on_game_over():
     anims.play("FadeGameOver")
     center_text.text = "Game Over!\nScore: %s" % score
-    shells.visible = false
-    hearts.visible = false
-    score_counter.visible = false
-    insanity_display.visible = false
+    $InGameDisplays.visible = false
 
 
 func _on_update_shells(number: int):
@@ -93,3 +89,16 @@ func update_score_display():
 
 func _on_update_insanity(level: float):
     insanity_display.text = "Insanity Level: %d%%" % round(level * 100)
+
+
+func _on_credits_button_pressed():
+    if !in_credits:
+        in_credits = true
+        start_button.visible = false
+        credits_button.text = "Back"
+        $Credits.visible = true
+    else:
+        in_credits = false
+        start_button.visible = true
+        credits_button.text = "Credits"
+        $Credits.visible = false

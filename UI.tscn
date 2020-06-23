@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Fonts/MetalMania-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI.gd" type="Script" id=2]
@@ -7,10 +7,6 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -96,8 +92,15 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=6]
 size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 1 )
 
 [node name="UI" type="Control"]
@@ -130,21 +133,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -64.0
-margin_top = 44.0
-margin_right = 64.0
-margin_bottom = 111.0
-custom_fonts/font = SubResource( 2 )
-text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CenterText" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
@@ -167,56 +155,57 @@ __meta__ = {
 anims/FadeGameOver = SubResource( 4 )
 anims/FadeIntro = SubResource( 5 )
 
-[node name="Hearts" type="Control" parent="."]
-visible = false
-margin_right = 208.0
-margin_bottom = 64.0
+[node name="MenuButtons" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="H1" type="Sprite" parent="Hearts"]
-position = Vector2( 40, 40 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 3 )
-
-[node name="H2" type="Sprite" parent="Hearts"]
-position = Vector2( 104, 40 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 3 )
-
-[node name="H3" type="Sprite" parent="Hearts"]
-position = Vector2( 168, 40 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 3 )
-
-[node name="Shells" type="Control" parent="."]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -144.0
-margin_bottom = 64.0
+[node name="StartButton" type="Button" parent="MenuButtons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 428.0
+margin_top = 324.0
+margin_right = 556.0
+margin_bottom = 391.0
+custom_fonts/font = SubResource( 2 )
+text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="S1" type="Sprite" parent="Shells"]
-position = Vector2( 40, 32 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 4 )
+[node name="CreditsButton" type="Button" parent="MenuButtons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 428.0
+margin_top = 404.0
+margin_right = 556.0
+margin_bottom = 471.0
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="S2" type="Sprite" parent="Shells"]
-position = Vector2( 104, 32 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 4 )
-
-[node name="ScoreCounter" type="Label" parent="."]
+[node name="InGameDisplays" type="Control" parent="."]
 visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreCounter" type="Label" parent="InGameDisplays"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -296.0
+margin_left = 196.0
 margin_top = 16.0
-margin_right = 88.0
+margin_right = 580.0
 margin_bottom = 76.0
 custom_fonts/font = SubResource( 6 )
 text = "Demon Pigs Slain: 0"
@@ -224,16 +213,99 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InsanityLevel" type="Label" parent="."]
-visible = false
+[node name="InsanityLevel" type="Label" parent="InGameDisplays"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 120.0
+margin_left = 612.0
 margin_top = 16.0
-margin_right = 504.0
+margin_right = 996.0
 margin_bottom = 76.0
 custom_fonts/font = SubResource( 6 )
 text = "Insanity Level: 20%"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Shells" type="Control" parent="InGameDisplays"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 840.0
+margin_right = 984.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S1" type="Sprite" parent="InGameDisplays/Shells"]
+position = Vector2( 40, 32 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 4 )
+
+[node name="S2" type="Sprite" parent="InGameDisplays/Shells"]
+position = Vector2( 104, 32 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 4 )
+
+[node name="Hearts" type="Control" parent="InGameDisplays"]
+margin_right = 208.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="H1" type="Sprite" parent="InGameDisplays/Hearts"]
+position = Vector2( 40, 40 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+
+[node name="H2" type="Sprite" parent="InGameDisplays/Hearts"]
+position = Vector2( 104, 40 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+
+[node name="H3" type="Sprite" parent="InGameDisplays/Hearts"]
+position = Vector2( 168, 40 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="Me" type="Label" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -140.0
+margin_right = 80.0
+margin_bottom = -71.0
+custom_fonts/font = SubResource( 7 )
+text = "Design, Art, Programming:
+Matt March
+(https://mattmarch.co.uk)"
+align = 1
+
+[node name="Music" type="Label" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -184.0
+margin_top = -36.0
+margin_right = 184.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 7 )
+text = "Music:
+\"Industrious Ferret\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/"
+align = 1
