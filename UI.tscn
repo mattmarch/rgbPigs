@@ -341,7 +341,7 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="PauseDisplay"]
 margin_left = -492.0
-margin_top = -278.0
+margin_top = -280.0
 margin_right = 532.0
 margin_bottom = 320.0
 color = Color( 0, 0, 0, 0.313726 )
