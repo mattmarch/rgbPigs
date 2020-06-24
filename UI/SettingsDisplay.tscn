@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/SettingsDisplay.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/MetalMania-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 3 )
+
+[node name="SettingsDisplay" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlackBackground" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolume" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -100.0
+margin_right = 20.0
+margin_bottom = -60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="MusicVolume"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -8.0
+margin_right = 128.0
+margin_bottom = 8.0
+value = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MusicVolume"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -52.0
+margin_right = 83.0
+margin_bottom = -11.0
+theme = ExtResource( 1 )
+text = "Music Volume"
+
+[node name="EffectsVolume" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -4.0
+margin_right = 20.0
+margin_bottom = 36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="EffectsVolume"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -8.0
+margin_right = 128.0
+margin_bottom = 8.0
+value = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EffectsVolume"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -52.0
+margin_right = 90.0
+margin_bottom = -11.0
+theme = ExtResource( 1 )
+text = "Effects Volume"
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 376.0
+margin_right = 576.0
+margin_bottom = 443.0
+theme = ExtResource( 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -108.5
+margin_top = 20.0
+margin_right = 108.5
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 1 )
+text = "RGB Pigs"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

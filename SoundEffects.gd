@@ -54,3 +54,10 @@ func _on_start():
     $Music.play(0.0)
     $Music.pitch_scale = 1.0
     
+    
+func set_music_volume(valueDb: float):
+    $Music.volume_db = valueDb
+    
+    
+func set_effects_volume(valueDb: float):
+    $Effects.volume_db = valueDb
