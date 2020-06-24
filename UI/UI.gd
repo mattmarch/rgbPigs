@@ -4,8 +4,6 @@ const FADED_COLOUR := Color(0.2, 0.2, 0.2)
 const BRIGHT_COLOUR := Color(1, 1, 1)
 
 onready var start_button: Button = $MenuButtons/StartButton
-onready var settings_button: Button = $MenuButtons/SettingsButton
-onready var credits_button: Button = $MenuButtons/CreditsButton
 onready var title: Label = $Title
 onready var background: ColorRect = $BlackBackground
 onready var center_text: Label = $CenterText
@@ -24,8 +22,10 @@ onready var shell_array := [$InGameDisplays/Shells/S1, $InGameDisplays/Shells/S2
 
 func _ready():
     start_button.connect("pressed", self, "_on_start_button_pressed")
-    settings_button.connect("pressed", self, "_on_settings_button_pressed")
-    credits_button.connect("pressed", self, "_on_credits_button_pressed")
+    $MenuButtons/SettingsButton.connect("pressed", self, "_on_settings_button_pressed")
+    $MenuButtons/CreditsButton.connect("pressed", self, "_on_credits_button_pressed")
+    $MenuButtons/QuitButton.connect("pressed", self, "_on_quit_button_pressed")
+    
     anims.connect("animation_finished", self, "_on_animation_finished")
     Events.connect("player_hit", self, "_on_player_hit")
     Events.connect("game_over", self, "_on_game_over")
@@ -99,3 +99,7 @@ func _on_credits_button_pressed():
 
 func _on_settings_button_pressed():
     $SettingsDisplay.visible = true
+
+
+func _on_quit_button_pressed():
+    get_tree().quit()
