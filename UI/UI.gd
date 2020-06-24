@@ -32,6 +32,7 @@ func _ready():
     Events.connect("update_shells", self, "_on_update_shells")
     Events.connect("demon_pig_slain", self, "_on_demon_pig_slain")
     Events.connect("update_insanity", self, "_on_update_insanity")
+    Events.connect("game_exited", self, "_on_game_exited")
 
 
 func _on_start_button_pressed():
@@ -43,7 +44,6 @@ func _on_start_button_pressed():
     
 func _on_animation_finished(anim_name: String):
     if anim_name == "FadeGameOver":
-        start_button.text = "Retry?"
         $MenuButtons.visible = true
     elif anim_name == "FadeIntro":
         health = 3
@@ -64,6 +64,14 @@ func _on_player_hit():
 func _on_game_over():
     anims.play("FadeGameOver")
     center_text.text = "Game Over!\nScore: %s" % score
+    start_button.text = "Retry?"
+    $InGameDisplays.visible = false
+
+
+func _on_game_exited():
+    anims.play("FadeGameOver")
+    center_text.text = ""
+    start_button.text = "Start"
     $InGameDisplays.visible = false
 
 
