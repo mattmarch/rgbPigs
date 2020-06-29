@@ -7,6 +7,9 @@ const PIG_COLOURS := [Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1)]
 
 const PLAYER_START := Vector2(900, 600)
 
+const SPAWN_RATE_INCREASE := 0.1
+const FASTEST_SPAWN_INTERVAL := 0.4
+
 const happy_pig_res := preload("res://HappyPig.tscn")
 const angry_pig_res := preload("res://AngryPig.tscn")
 
@@ -16,7 +19,8 @@ var angry_pig_chance: float
 
 
 func _ready():
-    $SpawnTimer.connect("timeout", self, "_on_timer_timeout")
+    $SpawnTimer.connect("timeout", self, "_on_spawn_timer_timeout")
+    $SpawnRateTimer.connect("timeout", self, "_on_spawn_rate_timer_timeout")
     Events.connect("start", self, "_on_start")
     Events.connect("game_over", self, "_on_game_over")
     Events.connect("happy_pig_slain", self, "_on_happy_pig_slain")
@@ -35,8 +39,13 @@ func _on_game_over():
     $SpawnTimer.stop()
 
 
-func _on_timer_timeout():
+func _on_spawn_timer_timeout():
     spawn_pig()
+
+
+func _on_spawn_rate_timer_timeout():
+    $SpawnTimer.wait_time = clamp($SpawnTimer.wait_time - SPAWN_RATE_INCREASE, FASTEST_SPAWN_INTERVAL, 1)
+    print($SpawnTimer.wait_time)
 
 
 func spawn_pig():
