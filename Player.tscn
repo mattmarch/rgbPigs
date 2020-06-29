@@ -24,10 +24,12 @@ shape = SubResource( 1 )
 
 [node name="Cone" type="Light2D" parent="Lights"]
 position = Vector2( -4, -6 )
+scale = Vector2( 1, 1.00887 )
 texture = ExtResource( 3 )
 texture_scale = 0.75
 color = Color( 1, 0, 0, 1 )
 mode = 2
+range_height = 256.0
 shadow_enabled = true
 shadow_gradient_length = 0.2
 shadow_filter = 4
@@ -37,6 +39,7 @@ shadow_filter_smooth = 10.0
 texture = ExtResource( 4 )
 color = Color( 1, 0, 0, 1 )
 mode = 2
+range_height = 256.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
