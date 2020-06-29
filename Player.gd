@@ -15,6 +15,7 @@ onready var lights := $Lights
 func _ready():
     $ReloadTimer.connect("timeout", self, "_on_reload_timer_timeout")
     Events.connect("game_over", self, "_on_game_over")
+    Events.connect("game_exited", self, "_on_game_exited")
     Events.connect("start", self, "_on_start")
 
 
@@ -69,6 +70,9 @@ func _on_reload_timer_timeout():
 
 
 func _on_game_over():
+    started = false
+    
+func _on_game_exited():
     started = false
     
 

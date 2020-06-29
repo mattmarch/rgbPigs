@@ -19,6 +19,7 @@ func _ready():
     Events.connect("happy_pig_slain", self, "_on_happy_pig_slain")
     Events.connect("game_over", self, "_on_game_over")
     Events.connect("start", self, "_on_start")
+    Events.connect("game_exited", self, "_on_game_over")
 
 
 func shoot():
