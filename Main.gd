@@ -30,7 +30,7 @@ func _ready():
     Events.connect("happy_pig_slain", self, "_on_happy_pig_slain")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
     handle_squeal_sounds()
 
     
