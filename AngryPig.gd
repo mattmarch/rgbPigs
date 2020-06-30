@@ -6,6 +6,7 @@ export (float) var turn_speed := 0.03
 
 const TRIGGER_RANGE := Globals.ANGRY_PIG_TRIGGER_RANGE
 const FREE_RANGE := Globals.ANGRY_PIG_DESPAWN_DIST
+const ATTACK_DISTANCE := 40.0
 
 var current_turn_speed := 0.0
 
@@ -16,11 +17,13 @@ var stopped := false
 
 enum Directions {LEFT = 1, RIGHT = -1}
 
+
 func _ready():
     $Sprite.modulate = colour
     $RotationTimer.connect("timeout", self, "_on_rotation_timer_timeout")
     $CooldownTimer.connect("timeout", self, "_on_cooldown_timer_timeout")
     $DeathTimer.connect("timeout", self, "_on_death_timer_timeout")
+    $AttackTimer.connect("timeout", self, "_on_attack_timer_timeout")
 
 
 func _physics_process(_delta):
@@ -31,13 +34,11 @@ func _physics_process(_delta):
     else:
         rotation += -direction_to_turn(player.position) * turn_speed
     move_and_slide(get_velocity())
-    if !has_just_attacked:
+    if !has_just_attacked and $AttackTimer.is_stopped():
         for collision_index in get_slide_count():
             var collision = get_slide_collision(collision_index)
             if collision.collider is Player:
-                Events.emit_signal("player_hit")
-                $CooldownTimer.start()
-                has_just_attacked = true
+                $AttackTimer.start()
                 break
     if player.global_position.distance_to(global_position) > FREE_RANGE:
         queue_free()
@@ -79,3 +80,12 @@ func hit():
 
 func _on_death_timer_timeout():
     queue_free()
+
+
+func _on_attack_timer_timeout():
+    
+    if stopped or player.global_position.distance_to(global_position) > ATTACK_DISTANCE:
+        return
+    Events.emit_signal("player_hit")
+    $CooldownTimer.start()
+    has_just_attacked = true
