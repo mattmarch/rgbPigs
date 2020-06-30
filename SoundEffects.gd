@@ -11,6 +11,10 @@ const reload = preload("res://Assets/Sounds/Reload.wav")
 # https://gamesounds.xyz/?dir=Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle/Gamemaster%20Audio%20-%20%20Gun%20Sound%20Pack
 const gun_shot = preload("res://Assets/Sounds/Shoot.wav")
 
+# EFX SD Pig 07 Squeal 20 from:
+# https://gamesounds.xyz/?dir=Sonniss.com%20-%20GDC%202015%20-%20Game%20Audio%20Bundle/Coll%20Anderson%20-%20Pig
+
+
 var reloading := false
 
 
@@ -62,3 +66,17 @@ func set_music_volume(valueDb: float):
     
 func set_effects_volume(valueDb: float):
     $Effects.volume_db = valueDb
+
+
+func play_squeal(distance: float):
+    if !$Squeal.playing:
+        $Squeal.play()
+    $Squeal.volume_db = distance_to_decibels(distance)
+        
+
+func stop_squeal():
+    $Squeal.stop()
+    
+
+func distance_to_decibels(distance: float) -> float:
+    return - distance / 8

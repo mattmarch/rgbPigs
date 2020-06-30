@@ -16,3 +16,7 @@ const PIG_SPEED: float = 50.0
 
 # Player
 const PLAYER_SPEED: float = 100.0
+
+
+# Sound
+const SQUEAL_DISTANCE: float = 100.0

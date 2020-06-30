@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PigSqueal.wav-0edab5dec5e81cb26768a3a01b6c9f97.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/PigSqueal.wav"
+dest_files=[ "res://.import/PigSqueal.wav-0edab5dec5e81cb26768a3a01b6c9f97.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

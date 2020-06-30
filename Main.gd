@@ -17,17 +17,37 @@ onready var player: Player = $Player
 
 var angry_pig_chance: float
 
+var started := false
+
 
 func _ready():
     $SpawnTimer.connect("timeout", self, "_on_spawn_timer_timeout")
     $SpawnRateTimer.connect("timeout", self, "_on_spawn_rate_timer_timeout")
     Events.connect("start", self, "_on_start")
     Events.connect("tutorial_finished", self, "_on_tutorial_finished")
-    Events.connect("game_over", self, "_on_game_over")
+    Events.connect("game_over", self, "game_finished")
+    Events.connect("game_exited", self, "game_finished")
     Events.connect("happy_pig_slain", self, "_on_happy_pig_slain")
 
 
+func _physics_process(delta):
+    handle_squeal_sounds()
+
+    
+func handle_squeal_sounds():
+    var distances := []
+    for child in get_children():
+        if child is AngryPig:
+            distances.append(child.position.distance_to(player.position))
+    var distance_to_closest_angry_pig = distances.min()
+    if distance_to_closest_angry_pig != null and distance_to_closest_angry_pig < GlobalConstants.SQUEAL_DISTANCE:
+        SoundEffects.play_squeal(distance_to_closest_angry_pig)
+    else:
+        SoundEffects.stop_squeal()
+
+
 func _on_start():
+    started = true
     player.position = PLAYER_START
     angry_pig_chance = 0.2
     Events.emit_signal("update_insanity", angry_pig_chance)
@@ -37,12 +57,12 @@ func _on_tutorial_finished():
     $SpawnTimer.start()
 
 
-func _on_game_over():
+func game_finished():
     for child in get_children():
         if child is AngryPig or child is HappyPig:
             child.queue_free()
     $SpawnTimer.stop()
-
+    started = false
 
 func _on_spawn_timer_timeout():
     spawn_pig()
@@ -59,7 +79,7 @@ func spawn_pig():
     pig.rotation = angle + rand_range(-PI/3, PI/3)
     pig.colour = get_random_colour()
     pig.player = player
-    add_child(pig)    
+    add_child(pig)
     
 
 func find_spawn_angle() -> float:
