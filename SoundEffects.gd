@@ -15,6 +15,8 @@ const gun_shot = preload("res://Assets/Sounds/Shoot.wav")
 # https://gamesounds.xyz/?dir=Sonniss.com%20-%20GDC%202015%20-%20Game%20Audio%20Bundle/Coll%20Anderson%20-%20Pig
 
 
+var squeal_setting := -1.94
+
 var reloading := false
 
 
@@ -66,6 +68,7 @@ func set_music_volume(valueDb: float):
     
 func set_effects_volume(valueDb: float):
     $Effects.volume_db = valueDb
+    squeal_setting = valueDb
 
 
 func play_squeal(distance: float):
@@ -79,4 +82,4 @@ func stop_squeal():
     
 
 func distance_to_decibels(distance: float) -> float:
-    return - distance / 8
+    return 2 - distance / 8 + squeal_setting

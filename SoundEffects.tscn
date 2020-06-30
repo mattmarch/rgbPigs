@@ -13,7 +13,6 @@ volume_db = -1.94
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -1.94
-autoplay = true
 bus = "Music"
 
 [node name="Squeal" type="AudioStreamPlayer" parent="."]
