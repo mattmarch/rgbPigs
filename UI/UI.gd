@@ -40,15 +40,15 @@ func _on_start_button_pressed():
     center_text.visible = true
     anims.play("FadeIntro")
     Events.emit_signal("start")
+    health = 3
+    for heart in heart_array:
+        heart.modulate = BRIGHT_COLOUR
 
     
 func _on_animation_finished(anim_name: String):
     if anim_name == "FadeGameOver":
         $MenuButtons.visible = true
     elif anim_name == "FadeIntro":
-        health = 3
-        for heart in heart_array:
-            heart.modulate = BRIGHT_COLOUR
         score = 0
         update_score_display()
         $InGameDisplays.visible = true
@@ -58,7 +58,7 @@ func _on_animation_finished(anim_name: String):
 func _on_player_hit():
     health -= 1
     heart_array[health].modulate = FADED_COLOUR
-    if health == 0:
+    if health <= 0:
         Events.emit_signal("game_over")
 
 

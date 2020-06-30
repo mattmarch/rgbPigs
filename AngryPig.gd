@@ -12,6 +12,7 @@ var current_turn_speed := 0.0
 var player: Player
 
 var has_just_attacked := false
+var stopped := false
 
 enum Directions {LEFT = 1, RIGHT = -1}
 
@@ -19,9 +20,12 @@ func _ready():
     $Sprite.modulate = colour
     $RotationTimer.connect("timeout", self, "_on_rotation_timer_timeout")
     $CooldownTimer.connect("timeout", self, "_on_cooldown_timer_timeout")
+    $DeathTimer.connect("timeout", self, "_on_death_timer_timeout")
 
 
 func _physics_process(_delta):
+    if stopped:
+        return
     if !is_player_nearby():
         rotation += current_turn_speed 
     else:
@@ -68,4 +72,10 @@ func get_velocity():
 
 func hit():
     Events.emit_signal("demon_pig_slain")
+    $HitParticles.emitting = true
+    $DeathTimer.start()
+    stopped = true
+    
+
+func _on_death_timer_timeout():
     queue_free()

@@ -17,6 +17,7 @@ func _ready():
     Events.connect("game_over", self, "_on_game_over")
     Events.connect("game_exited", self, "_on_game_exited")
     Events.connect("start", self, "_on_start")
+    Events.connect("player_hit", self, "_on_player_hit")
 
 
 func _physics_process(_delta: float):
@@ -79,3 +80,10 @@ func _on_game_exited():
 func _on_start():
     started = true
     shells = 2
+    
+
+func _on_player_hit():
+    if $HitParticles.emitting:
+        $HitParticles.restart()
+    else:
+        $HitParticles.emitting = true
