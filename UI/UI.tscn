@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/theme.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Fonts/MetalMania-Regular.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Icons/HeartIcon.png" type="Texture" id=6]
 [ext_resource path="res://UI/SettingsDisplay.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/CreditsDisplay.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Instructions.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -293,6 +294,12 @@ texture = ExtResource( 6 )
 position = Vector2( 168, 40 )
 scale = Vector2( 6, 6 )
 texture = ExtResource( 6 )
+
+[node name="Instructions" parent="InGameDisplays" instance=ExtResource( 9 )]
+margin_left = 492.0
+margin_top = 244.0
+margin_right = 492.0
+margin_bottom = 244.0
 
 [node name="CreditsDisplay" parent="." instance=ExtResource( 8 )]
 visible = false

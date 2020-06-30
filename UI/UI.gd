@@ -52,6 +52,7 @@ func _on_animation_finished(anim_name: String):
         score = 0
         update_score_display()
         $InGameDisplays.visible = true
+        $InGameDisplays/Instructions.start()
         
         
 func _on_player_hit():

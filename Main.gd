@@ -22,15 +22,20 @@ func _ready():
     $SpawnTimer.connect("timeout", self, "_on_spawn_timer_timeout")
     $SpawnRateTimer.connect("timeout", self, "_on_spawn_rate_timer_timeout")
     Events.connect("start", self, "_on_start")
+    Events.connect("tutorial_finished", self, "_on_tutorial_finished")
     Events.connect("game_over", self, "_on_game_over")
     Events.connect("happy_pig_slain", self, "_on_happy_pig_slain")
 
 
 func _on_start():
-    $SpawnTimer.start()
     player.position = PLAYER_START
     angry_pig_chance = 0.2
     Events.emit_signal("update_insanity", angry_pig_chance)
+
+
+func _on_tutorial_finished():
+    $SpawnTimer.start()
+
 
 func _on_game_over():
     for child in get_children():
@@ -45,7 +50,6 @@ func _on_spawn_timer_timeout():
 
 func _on_spawn_rate_timer_timeout():
     $SpawnTimer.wait_time = clamp($SpawnTimer.wait_time - SPAWN_RATE_INCREASE, FASTEST_SPAWN_INTERVAL, 1)
-    print($SpawnTimer.wait_time)
 
 
 func spawn_pig():
