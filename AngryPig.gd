@@ -83,7 +83,6 @@ func _on_death_timer_timeout():
 
 
 func _on_attack_timer_timeout():
-    
     if stopped or player.global_position.distance_to(global_position) > ATTACK_DISTANCE:
         return
     Events.emit_signal("player_hit")
