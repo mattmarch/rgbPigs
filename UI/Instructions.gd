@@ -42,11 +42,7 @@ func _input(event):
     if !event.is_action_pressed("skip"):
         return
     $Timer.stop()
-    var instruction_image = instructions[current_instruction][1]
-    if instruction_image != null:
-        instruction_image.visible = false
-    $Instructions.visible = false
-    current_instruction = -1
+    display_next_instruction()
     Events.emit_signal("tutorial_finished")
     
         
