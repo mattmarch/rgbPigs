@@ -38,6 +38,7 @@ func hit():
     $HitParticles.emitting = true
     stopped = true
     $DeathTimer.start()
+    $CollisionShape2D.disabled = true
 
 
 func _on_death_timer_timeout():
