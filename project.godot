@@ -40,7 +40,7 @@ _global_script_class_icons={
 
 config/name="RGB Pigs"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://HappyIcon.png"
 
 [autoload]
 
