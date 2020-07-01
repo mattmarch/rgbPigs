@@ -7,8 +7,8 @@
 [ext_resource path="res://HitParticles.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 8.0
-height = 0.0
+radius = 4.0
+height = 8.0
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 224, 224 )
@@ -19,6 +19,7 @@ scale = Vector2( -1, 1 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4, 0 )
 shape = SubResource( 1 )
 
 [node name="Lights" type="Node2D" parent="."]
@@ -37,6 +38,7 @@ shadow_filter = 4
 shadow_filter_smooth = 10.0
 
 [node name="Spot" type="Light2D" parent="Lights"]
+position = Vector2( -4, 0 )
 texture = ExtResource( 4 )
 color = Color( 1, 0, 0, 1 )
 mode = 2
@@ -47,7 +49,7 @@ current = true
 smoothing_enabled = true
 
 [node name="ShellSpawn" type="Position2D" parent="."]
-position = Vector2( 12, 6.5 )
+position = Vector2( 8, 0 )
 
 [node name="ReloadTimer" type="Timer" parent="."]
 wait_time = 1.2
