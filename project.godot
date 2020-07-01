@@ -55,7 +55,7 @@ gdscript/warnings/return_value_discarded=false
 [display]
 
 mouse_cursor/custom_image="res://Assets/Icons/Cursor.png"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [input]
