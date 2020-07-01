@@ -80,6 +80,7 @@ func _on_game_exited():
 func _on_start():
     started = true
     shells = 2
+    Events.emit_signal("update_shells", shells)
     
 
 func _on_player_hit():
