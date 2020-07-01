@@ -6,7 +6,7 @@ export (float) var turn_speed := 0.03
 
 const TRIGGER_RANGE := Globals.ANGRY_PIG_TRIGGER_RANGE
 const FREE_RANGE := Globals.ANGRY_PIG_DESPAWN_DIST
-const ATTACK_DISTANCE := 40.0
+const ATTACK_DISTANCE := 35.0
 
 var current_turn_speed := 0.0
 
