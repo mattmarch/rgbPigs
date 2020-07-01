@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
-const COLOURS := [Color(1.3, 0, 0), Color(0, 1, 0), Color(0, 0, 1.6)]
+const COLOURS := [Color(1.3, 0, 0), Color(0, 1, 0), Color(0, 0, 2.0)]
 
 var shell_resource := preload("res://Shell.tscn")
 
