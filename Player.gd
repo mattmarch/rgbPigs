@@ -34,9 +34,6 @@ func _physics_process(_delta: float):
     if Input.is_action_just_pressed("rightclick"):
         current_colour = (current_colour + 1) % 3
         set_lights(COLOURS[current_colour])
-    # For debugging only, remove later!
-    if Input.is_action_just_pressed("debug_hit"):
-        Events.emit_signal("player_hit")
 
 
 func get_direction_to_mouse() -> float:
