@@ -153,8 +153,9 @@ anims/FadeGameOver = SubResource( 3 )
 anims/FadeIntro = SubResource( 4 )
 
 [node name="MenuButtons" type="Control" parent="."]
+margin_top = 24.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -165,9 +166,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 428.0
-margin_top = 259.5
+margin_top = 284.0
 margin_right = 556.0
-margin_bottom = 326.5
+margin_bottom = 351.0
 theme = ExtResource( 1 )
 text = "Start"
 __meta__ = {
@@ -180,9 +181,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 428.0
-margin_top = 337.0
+margin_top = 372.0
 margin_right = 556.0
-margin_bottom = 404.0
+margin_bottom = 439.0
 theme = ExtResource( 1 )
 text = "Settings"
 __meta__ = {
@@ -195,26 +196,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 428.0
-margin_top = 420.0
+margin_top = 460.0
 margin_right = 556.0
-margin_bottom = 487.0
+margin_bottom = 527.0
 theme = ExtResource( 1 )
 text = "Credits"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="QuitButton" type="Button" parent="MenuButtons"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 428.0
-margin_top = 500.0
-margin_right = 556.0
-margin_bottom = 567.0
-theme = ExtResource( 1 )
-text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -24,7 +24,7 @@ func _ready():
     start_button.connect("pressed", self, "_on_start_button_pressed")
     $MenuButtons/SettingsButton.connect("pressed", self, "_on_settings_button_pressed")
     $MenuButtons/CreditsButton.connect("pressed", self, "_on_credits_button_pressed")
-    $MenuButtons/QuitButton.connect("pressed", self, "_on_quit_button_pressed")
+#    $MenuButtons/QuitButton.connect("pressed", self, "_on_quit_button_pressed")
     
     anims.connect("animation_finished", self, "_on_animation_finished")
     Events.connect("player_hit", self, "_on_player_hit")
