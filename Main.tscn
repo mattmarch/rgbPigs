@@ -62,6 +62,7 @@ position = Vector2( 1546, 600 )
 shape = SubResource( 2 )
 
 [node name="SpawnTimer" type="Timer" parent="MainLevel"]
+wait_time = 2.0
 
 [node name="SpawnRateTimer" type="Timer" parent="MainLevel"]
 wait_time = 30.0

@@ -7,8 +7,9 @@ const PIG_COLOURS := [Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1)]
 
 const PLAYER_START := Vector2(900, 600)
 
+const INITIAL_SPAWN_COUNT := 10
 const SPAWN_RATE_INCREASE := 0.1
-const FASTEST_SPAWN_INTERVAL := 0.4
+const FASTEST_SPAWN_INTERVAL := 0.6
 
 const happy_pig_res := preload("res://HappyPig.tscn")
 const angry_pig_res := preload("res://AngryPig.tscn")
@@ -55,6 +56,8 @@ func _on_start():
 
 func _on_tutorial_finished():
     $SpawnTimer.start()
+    for i in range(INITIAL_SPAWN_COUNT):
+        spawn_pig()
 
 
 func game_finished():
