@@ -39,7 +39,7 @@ func display_next_instruction():
 
 
 func _input(event):
-    if !event.is_action_pressed("skip"):
+    if !event.is_action_pressed("skip") or current_instruction == -1:
         return
     $Timer.stop()
     display_next_instruction()
