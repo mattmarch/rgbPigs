@@ -66,7 +66,6 @@ wait_time = 2.0
 
 [node name="SpawnRateTimer" type="Timer" parent="MainLevel"]
 wait_time = 30.0
-autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_scale = 2.0

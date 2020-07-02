@@ -10,6 +10,7 @@ const PLAYER_START := Vector2(900, 600)
 const INITIAL_SPAWN_COUNT := 10
 const SPAWN_RATE_INCREASE := 0.1
 const FASTEST_SPAWN_INTERVAL := 0.6
+const INITIAL_SPAWN_RATE := 2.0
 
 const happy_pig_res := preload("res://HappyPig.tscn")
 const angry_pig_res := preload("res://AngryPig.tscn")
@@ -52,10 +53,12 @@ func _on_start():
     player.position = PLAYER_START
     angry_pig_chance = 0.2
     Events.emit_signal("update_insanity", angry_pig_chance)
-
+    
 
 func _on_tutorial_finished():
+    $SpawnTimer.wait_time = INITIAL_SPAWN_RATE
     $SpawnTimer.start()
+    $SpawnRateTimer.start()
     for i in range(INITIAL_SPAWN_COUNT):
         spawn_pig()
 
@@ -65,6 +68,7 @@ func game_finished():
         if child is AngryPig or child is HappyPig:
             child.queue_free()
     $SpawnTimer.stop()
+    $SpawnRateTimer.stop()
     started = false
 
 func _on_spawn_timer_timeout():
