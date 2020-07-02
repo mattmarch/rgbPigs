@@ -2,6 +2,8 @@
 
 A 2D survival game where you must toggle your flashlight's colour to tell friend from foe.
 
+![screenshot of the game in action](DocImages/Screenshot.png "A screenshot of the game in action")
+
 Built in Godot Engine over a couple of weeks.
 
 
@@ -9,7 +11,7 @@ Built in Godot Engine over a couple of weeks.
 
 Project -> Export...
 
-Add HTML preset if doesn't already exist. Set export path to the Export directory (create if doesn't exist) as this is .gitignore'd.
+Add HTML preset if doesn't already exist. Set export path to the Export directory as this is .gitignore'd.
 
 Leave other settings as default and hit "Export Project".
 

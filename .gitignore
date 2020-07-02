@@ -11,4 +11,5 @@ export_presets.cfg
 data_*/
 
 # Exported files
-Export/
+Export/*
+!Export/.gdignore
