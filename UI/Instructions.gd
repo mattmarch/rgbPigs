@@ -43,6 +43,4 @@ func _input(event):
         return
     $Timer.stop()
     display_next_instruction()
-    Events.emit_signal("tutorial_finished")
-    
         
