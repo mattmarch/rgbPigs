@@ -2,6 +2,8 @@
 
 A 2D survival game where you must toggle your flashlight's colour to tell friend from foe.
 
+[Play it on itch.io](https://mattmarch.itch.io/rgb-pigs)
+
 ![screenshot of the game in action](DocImages/Screenshot.png "A screenshot of the game in action")
 
 Built in Godot Engine over a couple of weeks.
